@@ -1,0 +1,164 @@
+*{
+	box-sizing: border-box;
+ }
+
+body{
+	font-family: Calibri;
+	font-size: 16px;
+}
+
+header{
+	width: 100%;
+	background-color: #333;
+	height: 3em;
+	line-height:3em;
+	color: #FFF;
+	margin-bottom: 1em;
+	padding-left: 1em;
+}
+
+header h1{
+	font-size: 2em;
+	display:inline-block;
+	vertical-align:	middle;
+}
+
+.container{
+	width: 80%;
+	height: 100%;
+	margin: 0 auto;
+	min-width: 500px;
+}
+
+section{
+	margin: 2em 0;
+}
+
+section h2{
+	font-size: 3em;
+	display: block;
+	padding-bottom: .5em;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: .5em;
+}
+
+table{
+	width: 100%;
+	margin-bottom : .5em;
+}
+
+td, th {
+	padding: .7em;
+	margin: 0;
+	border: 1px solid #ccc;
+	text-align: center;
+	width:20%;
+}
+
+th{
+	font-weight: bold;
+	background-color: #EEE;
+}
+
+label{
+	color: #555;
+	display: block;
+	margin-bottom: .2em;
+}
+
+.campo{
+	margin: 0;
+	padding-bottom: 1em;
+	width: 100%;
+	border: 1px solid #ccc;
+	padding: .7em;
+	width: 100%;
+}
+
+.campo-medio{
+	display: inline-block;
+	padding-right: .5em;
+}
+
+.grupo{
+	width: 32%;
+	display: inline-block;
+	padding: 10px 0px;
+}
+
+button{
+	padding: .5em 2em;
+	border: 0;
+	border-bottom: 3px solid;
+	font-size: 1.2em;
+	cursor: pointer;
+	margin: 0;
+	margin-top: -3px;
+	color: #fff;
+	background-color:#0c8cd3;
+	border-color: #04324c;
+	width: 200px;
+    display: block;
+    clear: both;
+    margin: 10px 0px;
+
+}
+
+button:active{
+	margin-top:0px;
+	border: 0;
+}
+
+button[disabled=disabled], button:disabled {
+    background-color: gray;
+	border-color: darkgray;
+
+}
+
+.adicionar-task{
+    margin-top: 30px;
+}
+
+.campo-invalido{
+	border: 1px solid red;
+}
+
+.obesidade-morbida{
+background-color: #900;
+color: #fff;
+}
+
+.nivel-1{
+	background-color: #f1c40f;
+	color: #fff;
+	}
+
+.nivel-2{
+	background-color: #e67e22;
+	color: #fff;
+	}
+
+.nivel-3{
+	background-color: #e74c3c;
+	color: #fff;
+	}
+
+#mensagens-erro{ margin-bottom: 20px;}
+#mensagens-erro li { display: inline;
+										 padding: 10px;
+										 margin-left: 5px;
+										 background: #900;
+										 border-radius: 5px;
+										 color:#fff;
+										 font-size:13px;
+									 	}
+.sumindo{ opacity: 0; transition: 0.5s;	}
+
+#filtro-tabela{
+	width: 400px;
+	height: 40px;
+	margin-bottom: 10px;
+	padding-left: 5px;
+}
+
+.esconder{display: none;}
