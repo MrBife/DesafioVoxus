@@ -1,4 +1,3 @@
-
 //pegar o dado do campo
 var campoFiltro = document.querySelector('#filtro-tabela');
 
@@ -33,9 +32,7 @@ campoFiltro.addEventListener('input',function(){
       if (!expressao.test(nome)) {
         /*AQUI TENHO DE NEGAR A EXPRESSÃO  - quero testar se
           no nome tem uma parte do que foi digitado - ele retorna
-          TRUE ou FALSE - é diferente do exemplo anterior o outro
-          não comparava o nome com o campo de pesquisa, ele chamava
-          a classe para esconder
+          TRUE ou FALSE
         */
         task.classList.add('esconder');
       }

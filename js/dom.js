@@ -1,4 +1,4 @@
-//Pegando Tasks
+//Get Tasks
 var tasks = document.querySelectorAll(".task");
 
 //Percorrendo Tasks e adicionando em Array para consumir valores
@@ -16,16 +16,6 @@ var tasks = document.querySelectorAll(".task");
     }else {
       tasks[i].classList.add("nivel-3") ;
     }
-
-
-  //Pegando o nome do criador FAAAAAAAAAAAAAAAAAAAAAAAAAAZZZZZZZZZZZZZZZZZZEEEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRR
-    var tdcriador = tasks[i].querySelector(".info-criador");
-    
-        //calcular o IMC
-        var imc = peso / (altura * altura);
-    
-      //escrever os iMCS na página
-      tdIMC.textContent = imc.toFixed(2);
 }
 
 /* Adicionando uma Task */

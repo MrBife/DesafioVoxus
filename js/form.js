@@ -105,7 +105,7 @@ mensagensErro.innerHTML="";
       erros.push("O anexo está inválido ou vazio");
     }
 
-    if ((task.prioridade.value < 0) || (task.prioridade.value > 3)) {
+    if ((task.anexo.length == 0) || (task.prioridade.value < 0) || (task.prioridade.value > 3)) {
       erros.push("A prioridade está inválida ou vazia");
     }
 

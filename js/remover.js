@@ -1,24 +1,3 @@
-/*
-Parte 1 - Somente para elementos inseridos diretamente na tabela
-
-//selecionar todo mundo tem a tr com a classe task
-var tasks = document.querySelectorAll('.task');
-
-//percorrer o Array
-tasks.forEach(function(task){
-  //colocando o escutador de eventos
-  task.addEventListener('dblclick',function(){
-    //o this é o dono do evento, ou seja, é o cara que foi clicado
-    this.remove();
-  });
-});
-*/
-
-/*
-Parte 2 - Usando DELEGATE - ele irá delegara eventos para todos
-Quando usamos eventos, eles são escutados por todos os ascendentes do elemento, ou seja, todos os elementos que estão acima dele. Exemplo: Clico no td a tr escuta,o tbody também o conatiner e assim por diante
-*/
-
 //selecionar o tbody
 var tabela = document.querySelector('tbody');
 

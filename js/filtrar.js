@@ -1,10 +1,3 @@
-/*###############################################################
-Vamos fazer uma pesquisa que vai adicionar ou remover uma classe
-CSS - cuidado pois quando ele faz a pesquisa e não acha nada, ou
-se ele acha depois, os dados da tabela não voltarão - verifcar se
-o campo está vazio e a informação existe
-###############################################################*/
-
 //pegar o dado do campo
 var campoFiltro = document.querySelector('#filtro-tabela');
 
