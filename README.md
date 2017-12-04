@@ -23,3 +23,7 @@ Espero poder mostrar mais para vocês no dia-a-dia.
 
 Aaah, verdade... Normalmente eu faço anotações em inglês, mas como estava com pouco tempo foi
 em português mesmo.
+
+
+
+EDIT: Acabei abrindo o projeto na segunda (04/12), pois não consegui dormir por conta de 2 linhas de código que eu sabia que dava pra arrumar mas não consegui arrumar por questão de tempo. Agora estão do jeito que eu queria :)
