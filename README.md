@@ -1,29 +1,252 @@
-Olá!
+![Logo](/vpoo.png)
 
-Irei informar o tempo utilizado e tentar especificar ao máximo o tempo que gastei:
+# Desafio Voxus
+> CRUD utilizando Firestore com funções em Real-Time
 
-No Sabado, trabalhei das 17:00 às 18:17 e eu montei a estrutura basica (html, css, javascript)
-Então, eu já tinha uma carinha (não tão feia) para o projeto.
+- Use <kbd>Ctrl</kbd> + <kbd>F</kbd> ou <kbd>command</kbd> + <kbd>F</kbd> para buscar o seu tópico.
+- Qualquer tipo de contribuição é bem-vinda, este projeto irá continuar sendo desenvolvido mesmo após o período de testes.
 
-No Domingo eu peguei pesado, das 12:34 até 16:55 e 10:33 às 00:00 (precisa dormir).
-Adicionei funções de Adicionar, Clicks, Pesquisas e Cores...
-No segundo horário corri atrás da autenticação de usuário (usando Firestore do Google)
+## Conteúdo
 
-Portanto tomei em torno de:
-6 horas e 20 minutos.
+### Html
 
-Infelizmente não consegui me dedicar 100% no projeto, mas provavelmente com mais um pouco
-de tempo eu conseguiria fazer algo MUITO mais legal ^^
+* [Index.html](#index.html)
+* [Tasks.html](#tasks.html)
 
-Sei que pode ser pouca coisa, mas acredito que já seja algo interessante para se ver.
+### Css
 
-Posso dizer que estou estudando MUITO sobre Firestore e como implementamos ele nos projetos,
-mesmo que esteja no BETA, é super bacana ^^
-Espero poder mostrar mais para vocês no dia-a-dia.
+* [Style.css](#style.css)
+* [StyleTask.css](#styleTask.css)
+* [Reset.css](#reset.css)
+* [Style.scss](#Style.scss)
 
-Aaah, verdade... Normalmente eu faço anotações em inglês, mas como estava com pouco tempo foi
-em português mesmo.
+### Js
+
+* [Cad.js](#cad.js)
+* [Dom.js](#dom.js)
+* [FiltrarER.js](#filtrar.js)
+* [Form.js](#form.js)
+* [Index.js](#index.js)
+
+### TODO note ;)
+
+* [TODO](#Todo)
+
+## HTML
+
+### Index.html
+
+Monteia estrutura para Sign In e Sign Up do projeto baseado em um código escrito no Codepen: https://codepen.io/Momciloo/pen/PPvrEz?q=sign&limit=all&type=type-pens
+
+Adicionei Scripts para o funcionamento do Firestore & Firebase
+
+```js
+  <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase-firestore.js"></script>
+```
+[⬆ de volta para cima](#conteúdo)
+
+### Tasks.html
+
+Além de adicionar os Scripts para o funcionamento do Firestore & Firebase, desenvolvi por completo o projeto.
+Estruturei para que tenha uma tabela em aparente, onde iremos adicionar nossas Tasks vinda do nosso banco (Firestore) e um PopUp ao clicar em adicionar ou DoubleClick em alguma Task na tabela.
+
+[⬆ de volta para cima](#conteúdo)
+
+## CSS
+
+### Style.css
+
+Não precisei modificar nada referente à este .CSS, pois ele impacta diretamente com o index.html que é parte de códigos retirados do CodePen.
+[⬆ de volta para cima](#conteúdo)
+
+### StyleTask.css
+
+Por ter desenvolvido inteiro a tela de Tasks(.html), desenvolvi um Style para a página para que tenha pelo menos uma "carinha bonita".
+[⬆ de volta para cima](#conteúdo)
+
+### Reset.css
+
+Encontrei este código onde ele resetaria o nosso Form assim que fizesse alguma ação de CRUD.
+[⬆ de volta para cima](#conteúdo)
+
+### Style.scss
+
+Parte retirada de CodePen, juntamente com o Index.html
+[⬆ de volta para cima](#conteúdo)
+
+## JS
+
+### Cad.js
+
+Inicializei o Firestore com a chave única que pode ser retirado no Google Console (Por favor, não criar projetos com a mesma chave).
+
+```js
+  // Set the configuration for your app
+  // TODO: Replace with your project's config object
+  var config = {
+    apiKey: '<your-api-key>',
+    authDomain: '<your-auth-domain>',
+    databaseURL: '<your-database-url>',
+    storageBucket: '<your-storage-bucket>'
+  };
+  firebase.initializeApp(config);
+
+  // Get a reference to the storage service, which is used to create references in your storage bucket
+  var storage = firebase.storage();
+  ```
+  
+  Fiz uma referência com a `Collection` do Firestore, especificando que irei utilizar o "User".
+  
+  ```js
+  window.storeUser = firestore.collection("User");
+  ```
+  Para verificar o Log In, utilize:
+  
+  ```js
+  const promise = auth.signInWithEmailAndPassword(email, pass);
+  ```
+  
+  Gravar um usuário no Firestore (Collection) e no Authentication é fácil, neste caso utilizei ambos ao mesmo tempo:
+  
+  ```js
+  storeUser.add({
+            emailUser: email,
+            nomeUser: name,
+            senhaUser: pass
+        }).then(function(){
+            auth.createUserWithEmailAndPassword(
+                email,
+                pass
+            ).then(function() {
+                console.log("Gravado com sucesso!");
+                alert("Seja mais que bem-vindo! ;)");
+            }).catch(function (error) {
+                alert(error);
+            });
+        }).catch(function(error){
+            alert(error);
+        });
+     ```
+     
+  Para deixar o projeto em Real-Time, precisamos colocar um Listener para fazer a Stream e ficar escutando qualquer tipo de mudança no projeto, portanto com qualquer alteração (mesmo que não seja do mesmo computador) ele irá modificar automaticamente.
+     
+     ```js
+     firebase.auth().onAuthStateChanged(firebaseUser => {
+     ```
+     
+  Neste caso, além de passar pela URL o nome da pessoa ao se cadastrar, eu "printei" no console o JSON com as informações que acabamos de cadastrar e o e-mail dele. Além de direcionar ele assim que houvesse algum cadastro ou login.
+  
+  ```js
+  if(firebaseUser) {
+        location.href = "tasks.html?name=" + encodeURI(window.name_up.val());
+        console.log(firebaseUser);
+        console.log(user.email);
+    }else {
+        console.log('not logged in');
+    }
+    });
+    ```
+  
+  
+  
+[⬆ de volta para cima](#conteúdo)
+
+### Dom.js
+
+Ainda em Construção!
+Aguarde novas mudanças ;)
+
+[⬆ de volta para cima](#conteúdo)
+
+### FiltrarER.js
+
+Selecionamos o campo do Filtro e criamos uma função para pegar todo mundo que tem a classe "Task", verifiquei se eram vazio e percorri eles pegando o nome e armazendo em uma váriavel para dar oportunidade de usarmos uma expressão regular.
+
+```js
+campoFiltro.addEventListener('input',function(){
+  var tasks = document.querySelectorAll('.task');
+  if (this.value.length > 0) {
+    for (var i = 0; i < tasks.length; i++) {
+      var task = tasks[i];
+      var tdNome = task.querySelector('.info-nome');
+      var nome = tdNome.textContent;
+```
+
+Passamos 2 parâmetros para a expressão, para usar maiúsculo ou minúsculo colocamos como parâmetro o "i". Depois verificamos com um Return de True or False e brincamos de adicionar e esconder uma classe em CSS.
+
+```js
+var expressao = new RegExp(this.value,"i");
+
+      if (!expressao.test(nome)) {
+        task.classList.add('esconder');
+      }
+      else{
+        task.classList.remove('esconder');
+      }
+    }
+  }
+  else{
+    for (var i = 0; i < tasks.length; i++) {
+      var task = tasks[i];
+      task.classList.remove('esconder');
+    }
+  }
+```
 
 
+[⬆ de volta para cima](#conteúdo)
 
-EDIT: Acabei abrindo o projeto na segunda (04/12), pois não consegui dormir por conta de 2 linhas de código que eu sabia que dava pra arrumar mas não consegui arrumar por questão de tempo. Agora estão do jeito que eu queria :)
+### Form.js
+
+Ainda em Construção!
+Aguarde novas mudanças ;)
+
+[⬆ de volta para cima](#conteúdo)
+
+### Index.js
+
+Parte do código retirada do CodePen, mas basicamente ele verifica se o SignIn está selecionado ou o SignUp e então ele ativa e esconde algumas classes, para aparecer os campos corretos.
+
+```js
+$('.tabs .tab').click(function(){
+    if ($(this).hasClass('signin')) {
+        $('.tabs .tab').removeClass('active');
+        $(this).addClass('active');
+        $('.cont').hide();
+        $('.signin-cont').show();
+    } 
+    if ($(this).hasClass('signup')) {
+        $('.tabs .tab').removeClass('active');
+        $(this).addClass('active');
+        $('.cont').hide();
+        $('.signup-cont').show();
+    }
+});
+```
+
+E aqui é um código onde damos movimentação com o mouse (scroll) na imagem, para ficar bonitinho :)
+
+```js
+$('.container .bg').mousemove(function(e){
+    var amountMovedX = (e.pageX * -1 / 30);
+    var amountMovedY = (e.pageY * -1 / 9);
+    $(this).css('background-position', amountMovedX + 'px ' + amountMovedY + 'px');
+});
+```
+
+[⬆ de volta para cima](#conteúdo)
+
+## TODO ;)
+
+### TODO
+
+Continuarei atualizando o projeto com o tempo, cada vez agregando mais para que tenha cada vez mais funções.
+
+- Double Click Table - Get Data
+- Update from the Double Click with the Data
+- Delete from the Double Click with the Data
+- Update CSS
+- Improve Bugs
+
+◔ ⌣ ◔
