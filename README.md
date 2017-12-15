@@ -127,13 +127,13 @@ Inicializei o Firestore com a chave única que pode ser retirado no Google Conso
         }).catch(function(error){
             alert(error);
         });
-     ```
+  ```
      
   Para deixar o projeto em Real-Time, precisamos colocar um Listener para fazer a Stream e ficar escutando qualquer tipo de mudança no projeto, portanto com qualquer alteração (mesmo que não seja do mesmo computador) ele irá modificar automaticamente.
      
-     ```js
-     firebase.auth().onAuthStateChanged(firebaseUser => {
-     ```
+  ```js
+  firebase.auth().onAuthStateChanged(firebaseUser => {
+  ```
      
   Neste caso, além de passar pela URL o nome da pessoa ao se cadastrar, eu "printei" no console o JSON com as informações que acabamos de cadastrar e o e-mail dele. Além de direcionar ele assim que houvesse algum cadastro ou login.
   
@@ -146,7 +146,7 @@ Inicializei o Firestore com a chave única que pode ser retirado no Google Conso
         console.log('not logged in');
     }
     });
-    ```
+  ```
   
   
   
