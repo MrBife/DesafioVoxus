@@ -10,23 +10,23 @@
 
 ### Html
 
-* [Index.html](#index.html)
-* [Tasks.html](#tasks.html)
+* [Index](#index.html)
+* [Tasks](#tasks.html)
 
 ### Css
 
-* [Style.css](#style.css)
-* [StyleTask.css](#styleTask.css)
-* [Reset.css](#reset.css)
-* [Style.scss](#Style.scss)
+* [Style](#style.css)
+* [StyleTask](#styleTask.css)
+* [Reset](#reset.css)
+* [Style](#Style.scss)
 
 ### Js
 
-* [Cad.js](#cad.js)
-* [Dom.js](#dom.js)
-* [FiltrarER.js](#filtrar.js)
-* [Form.js](#form.js)
-* [Index.js](#index.js)
+* [Cad](#cad.js)
+* [Dom](#dom.js)
+* [FiltrarER](#filtrar.js)
+* [Form](#form.js)
+* [Index JS](#index.js)
 
 ### TODO note ;)
 
@@ -34,7 +34,7 @@
 
 ## HTML
 
-### Index.html
+### Index
 
 Monteia estrutura para Sign In e Sign Up do projeto baseado em um código escrito no Codepen: https://codepen.io/Momciloo/pen/PPvrEz?q=sign&limit=all&type=type-pens
 
@@ -46,7 +46,7 @@ Adicionei Scripts para o funcionamento do Firestore & Firebase
 ```
 [⬆ de volta para cima](#conteúdo)
 
-### Tasks.html
+### Tasks
 
 Além de adicionar os Scripts para o funcionamento do Firestore & Firebase, desenvolvi por completo o projeto.
 Estruturei para que tenha uma tabela em aparente, onde iremos adicionar nossas Tasks vinda do nosso banco (Firestore) e um PopUp ao clicar em adicionar ou DoubleClick em alguma Task na tabela.
@@ -55,29 +55,29 @@ Estruturei para que tenha uma tabela em aparente, onde iremos adicionar nossas T
 
 ## CSS
 
-### Style.css
+### Style
 
 Não precisei modificar nada referente à este .CSS, pois ele impacta diretamente com o index.html que é parte de códigos retirados do CodePen.
 [⬆ de volta para cima](#conteúdo)
 
-### StyleTask.css
+### StyleTask
 
 Por ter desenvolvido inteiro a tela de Tasks(.html), desenvolvi um Style para a página para que tenha pelo menos uma "carinha bonita".
 [⬆ de volta para cima](#conteúdo)
 
-### Reset.css
+### Reset
 
 Encontrei este código onde ele resetaria o nosso Form assim que fizesse alguma ação de CRUD.
 [⬆ de volta para cima](#conteúdo)
 
-### Style.scss
+### Style
 
 Parte retirada de CodePen, juntamente com o Index.html
 [⬆ de volta para cima](#conteúdo)
 
 ## JS
 
-### Cad.js
+### Cad
 
 Inicializei o Firestore com a chave única que pode ser retirado no Google Console (Por favor, não criar projetos com a mesma chave).
 
@@ -152,14 +152,14 @@ Inicializei o Firestore com a chave única que pode ser retirado no Google Conso
   
 [⬆ de volta para cima](#conteúdo)
 
-### Dom.js
+### Dom
 
 Ainda em Construção!
 Aguarde novas mudanças ;)
 
 [⬆ de volta para cima](#conteúdo)
 
-### FiltrarER.js
+### FiltrarER
 
 Selecionamos o campo do Filtro e criamos uma função para pegar todo mundo que tem a classe "Task", verifiquei se eram vazio e percorri eles pegando o nome e armazendo em uma váriavel para dar oportunidade de usarmos uma expressão regular.
 
@@ -197,14 +197,14 @@ var expressao = new RegExp(this.value,"i");
 
 [⬆ de volta para cima](#conteúdo)
 
-### Form.js
+### Form
 
 Ainda em Construção!
 Aguarde novas mudanças ;)
 
 [⬆ de volta para cima](#conteúdo)
 
-### Index.js
+### Index JS
 
 Parte do código retirada do CodePen, mas basicamente ele verifica se o SignIn está selecionado ou o SignUp e então ele ativa e esconde algumas classes, para aparecer os campos corretos.
 
