@@ -3,143 +3,93 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Tasks</title>
+
+		<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.7.0/firebase-firestore.js"></script>
+		
 		<link rel="stylesheet" type="text/css" href="css/reset.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/styleTask.css">
 
 	</head>
 	<body>
 
 		<header>
-			<div>
-				<h1 id="titulo">Nossas Tasks</h1>
+			<div class="container">
+				<h1 id="titulo"></h1>
+				<button id="deslogar" class="btn small">Deslogar</button>
 			</div>
 		</header>
 		<main>
 			<section class="container">
-				<label for="filtro-tabela">Pesquisar</label>
-				<input type="text" name="filtro" id="filtro-tabela" placeholder="Digite o nome da task">
+				<div id="wrap_pesquisar">
+					<input type="text" name="filtro" id="filtro-tabela" placeholder="Pesquisar" />
+					<button type="button" id="adicionar">+</button>
+				</div>
+
 				<table>
 					<thead>
 						<tr>
 							<th>Nome</th>
 							<th>Descrição</th>
 							<th>Anexos</th>
-							<th>Prioridade (0 - 3)</th>
+							<th>Prioridade (1 - 5)</th>
 							<th>Criador</th>
 						</tr>
 					</thead>
 					<tbody id="tabela-tasks">
-						<tr class="task" id="task-um">
-							<td class="info-nome">Café</td>
-							<td class="info-desc">Fazer o melhor café do mundo!</td>
-							<td class="info-anexo">3</td>
-							<td class="info-prioridade">3</td>
-							<td class="info-criador">Alvaro</td>
-						</tr>
-
-						<tr class="task" >
-							<td class="info-nome">Tu</td>
-							<td class="info-desc">80</td>
-							<td class="info-anexo">1.72</td>
-							<td class="info-prioridade">1</td>
-							<td class="info-criador">0</td>
-						</tr>
-
-						<tr class="task" >
-							<td class="info-nome">Tu2</td>
-							<td class="info-desc">180</td>
-							<td class="info-anexo">1.22</td>
-							<td class="info-prioridade">2</td>
-							<td class="info-criador">0</td>
-						</tr>
-
-
-						<tr class="task" >
-							<td class="info-nome">Ele</td>
-							<td class="info-desc">54</td>
-							<td class="info-anexo">1.64</td>
-							<td class="info-prioridade">1</td>
-							<td class="info-criador">0</td>
-						</tr>
-
-						<tr class="task">
-							<td class="info-nome">Nós</td>
-							<td class="info-desc">85</td>
-							<td class="info-anexo">1.73</td>
-							<td class="info-prioridade">2</td>
-							<td class="info-criador">0</td>
-						</tr>
-
-						<tr class="task">
-							<td class="info-nome">Nós2</td>
-							<td class="info-desc">205</td>
-							<td class="info-anexo">1.73</td>
-							<td class="info-prioridade">3</td>
-							<td class="info-criador">0</td>
-						</tr>
-
-						<tr class="task" >
-							<td class="info-nome">Vós</td>
-							<td class="info-desc">46</td>
-							<td class="info-anexo">1.55</td>
-							<td class="info-prioridade">1</td>
-							<td class="info-criador">0</td>
-						</tr>
-
-						<tr class="task" >
-							<td class="info-nome">Eles</td>
-							<td class="info-desc">96</td>
-							<td class="info-anexo">1.65</td>
-							<td class="info-prioridade">2</td>
-							<td class="info-criador">0</td>
-						</tr>
 					</tbody>
 					<tfoot>
 						<tr>
-								<td colspan="5">Single Click = Done! - Double Click = Exclude!</td>
+							<td colspan="5">Single Click = Done! - Double Click = Exclude!</td>
 						</tr>
 					</tfoot>
 				</table>
 			</section>
 
-			<section class="container">
-				<h2 id="titulo-form">Adicionar novo task</h2>
-				<ul id="mensagens-erro">
+			<section id="popup_add">
+				<div class="wrap">
+					<div class="close_window"></div>
+					<h3 id="titulo-form" class="title">Adicionar Task</h3>
+					<ul id="mensagens-erro">
 
-				</ul>
-				<form id="form-adiciona">
-					<div>
-						<label for="nome">Nome</label>
-						<input type="text" id="nome" name="nome" class="campo" placeholder="Digite o nome da Task">
-					</div>
+					</ul>
+					<form id="form-adiciona">
+						<div>
+							<label for="nome">Nome</label>
+							<input type="text" id="nome" name="nome" class="campo" placeholder="Digite o nome da Task">
+						</div>
 
-					<div class="grupo">
-						<label for="desc">Descrição</label>
-						<input type="text" id="desc" name="desc" class="campo campo-medio" placeholder="Digite a descrição da Task">
-					</div>
+						<div class="grupo">
+							<label for="desc">Descrição</label>
+							<input type="text" id="desc" name="desc" class="campo campo-medio" placeholder="Digite a descrição da Task">
+						</div>
 
-					<div class="grupo">
-						<label for="anexo">Link de anexos</label>
-						<input type="text" id="anexo" name="anexo" class="campo campo-medio" placeholder="Insira o Link dos anexos">
-					</div>
+						<div class="grupo">
+							<label for="anexo">Link de anexos</label>
+							<input type="text" id="anexo" name="anexo" class="campo campo-medio" placeholder="Insira o Link dos anexos">
+						</div>
 
-					<div class="grupo">
-						<label for="prioridade">Nível de prioridade</label>
-						<input type="text" id="prioridade" name="prioridade" class="campo campo-medio" placeholder="Digite o nível de prioridade">
-					</div>
+						<div class="grupo">
+							<label for="prioridade">Nível de prioridade</label>
+							<input type="text" id="prioridade" name="prioridade" class="campo campo-medio" placeholder="Digite o nível de prioridade">
+						</div>
 
-					<button id="adicionar-task" class="botao bto-principal">Adicionar</button>
-				</form>
+						<div class="text-right">
+							<button id="adicionar-task" class="btn">Adicionar</button>
+							<button id="editar-task" class="btn hidden">Editar</button>
+						</div>
+					</form>
+				</div>
 			</section>
+
 		</main>
+
+		<button id="editar" class="btn small">Editar</button>
+
+		<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+		<script type="text/javascript" src="js\dom.js"></script>
 		<script type="text/javascript" src="js\form.js"></script>
-		<script type="text/javascript" src="js\remover.js"></script>
 		<script type="text/javascript" src="js\filtrarER.js"></script>
-
-
-
-
-
 
 	</body>
 </html>
