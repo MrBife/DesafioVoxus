@@ -11,6 +11,7 @@
 	};
 	firebase.initializeApp(config);
 	var firestore = firebase.firestore();
+	var storage = firebase.storage();
 
 
 	//Get Users
@@ -21,11 +22,11 @@
 		querySnapshot.forEach(function(doc) {
 			allUsers.push(doc.data());
 		});
-		console.log(allUsers);
+
 		var getName = allUsers.filter(function (n) {
 			return n.emailUser == UserEmail;	
 			});
-			console.log(getName);
+
 			//Name Header
 			$("#titulo").html("Olá, " + getName[0].nomeUser);
 			window.name = getName[0].nomeUser;
@@ -41,7 +42,7 @@
 		querySnapshot.forEach(function(doc) {
 			allTasks.push(doc.data());
 		});
-		console.log(allTasks);
+
 
 		//Put at table
 		var tabela = document.querySelector('#tabela-tasks');
@@ -106,7 +107,6 @@
 		var alvoDoElemento = e.target;
 		var paiDoElemento = alvoDoElemento.parentNode;
 
-		console.log()
 
 		e.preventDefault();
 		$("#popup_add").show();
@@ -114,13 +114,6 @@
 		$("#editar-task").removeClass("hidden");
 		$("#titulo-form").html("Editar Task");
 
-	})
-
-	$("tbody").on("click", function(e){
-		var alvoDoElemento = e.target;
-		var paiDoElemento = alvoDoElemento.parentNode;
-
-		paiDoElemento.classList.add('done');
 	})
 
 
@@ -190,7 +183,6 @@
     firebase.auth().onAuthStateChanged(firebaseUser => {
 		if(firebaseUser) {
 			window.UserEmail = firebaseUser.email;
-			console.log(firebaseUser);
 		}else {
 			console.log('not logged in');
 			location.href = "index.html";

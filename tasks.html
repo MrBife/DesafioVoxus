@@ -40,7 +40,7 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<td colspan="5">Single Click = Done! - Double Click = Exclude!</td>
+							<td colspan="5">Double Click = Options!</td>
 						</tr>
 					</tfoot>
 				</table>
@@ -65,8 +65,9 @@
 						</div>
 
 						<div class="grupo">
-							<label for="anexo">Link de anexos</label>
-							<input type="text" id="anexo" name="anexo" class="campo campo-medio" placeholder="Insira o Link dos anexos">
+							<label for="anexo">Anexos</label>
+							<progress value="0" max="100" id="uploader">0%</progress>
+							<input type="file" id="anexo" name="anexo" class="campo campo-medio" placeholder="Insira o Link dos anexos">
 						</div>
 
 						<div class="grupo">
@@ -83,8 +84,6 @@
 			</section>
 
 		</main>
-
-		<button id="editar" class="btn small">Editar</button>
 
 		<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 		<script type="text/javascript" src="js\dom.js"></script>

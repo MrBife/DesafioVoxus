@@ -9,7 +9,38 @@ window.storeTask = firestore.collection("Task");
     window.prioTask = $('#prioridade');
     window.add = $('#adicionar-task');
 
-    //Add SingUp Event
+
+
+//Listen for file selection
+
+anexoTask.addEventListener('change', e => {
+    //Get File
+      var file = e.target.files[0];
+    //Create a Storage ref
+      var storageRef = firebase.storage().ref(window.name + file.name);
+  
+    //Upload file
+      var task = storageRef.put(file);
+  
+    //Update progress bar
+    task.on('state_changed', 
+          function progress(snapshot) {
+              var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              uploader.value = percentage;
+          },
+  
+          function error(err) {
+            alert("Something went wrong with the upload")
+          },
+  
+          function complete() {
+            alert("Upload done")
+          }
+      );
+    });
+
+
+    //Add Task
 add.on('click', e => {
 
     e.preventDefault();
