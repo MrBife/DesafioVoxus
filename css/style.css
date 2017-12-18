@@ -169,10 +169,6 @@ body .container .content input.submit:hover {
   transition: all 0.2s;
 }
 
-body .container .content input:focus {
-  outline: none;
-}
-
 body .container .content .checkbox {
   margin-top: 4px;
   overflow: hidden;

@@ -13,7 +13,7 @@ window.storeTask = firestore.collection("Task");
 
 //Listen for file selection
 
-anexoTask.addEventListener('change', e => {
+anexoTask.on('change', e => {
     //Get File
       var file = e.target.files[0];
     //Create a Storage ref

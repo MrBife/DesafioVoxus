@@ -91,12 +91,6 @@ label{
 	padding: 10px 0px;
 }
 
-
-button:active{
-	margin-top:0px;
-	border: 0;
-}
-
 button[disabled=disabled], button:disabled {
     background-color: gray;
 	border-color: darkgray;
@@ -232,16 +226,16 @@ input[type="text"]{
 	cursor: pointer;
 }
 
-.btn:focus{
-	margin: 0;
-}
-
 .title{
 	font-size: 32px;
 }
 
 .btn.small{
 	padding: 5px 15px;
+}
+
+.btn.red{
+	background-color: #EB3737;
 }
 
 .hidden{
