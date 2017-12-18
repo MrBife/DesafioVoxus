@@ -243,9 +243,7 @@ $('.container .bg').mousemove(function(e){
 
 Continuarei atualizando o projeto com o tempo, cada vez agregando mais para que tenha cada vez mais funções.
 
-- Double Click Table - Get Data
-- Update from the Double Click with the Data
-- Delete from the Double Click with the Data
+- Download archives option
 - Update CSS
 - Improve Bugs
 
